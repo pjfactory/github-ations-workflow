@@ -32,6 +32,8 @@ jobs:
                   node-version-file: ".nvmrc"
                   cache: "yarn"
                   registry-url: "https://registry.npmjs.org"
+            - name: yarn version
+              run: yarn --verison
             - name: Get yarn cache directory path
               id: yarn-cache-dir-path
               run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
