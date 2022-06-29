@@ -5,12 +5,16 @@ on:
         inputs:
             project_name:
                 required: true
+                type: string
             stage:
                 required: true
+                type: string
             ssm_region:
                 value: "us-east-1"
+                type: string
             deploy_alias:
                 value: "v1"
+                type: string
         secrets:
             npm_token:
                 required: true
