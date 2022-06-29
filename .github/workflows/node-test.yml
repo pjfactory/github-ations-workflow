@@ -55,11 +55,6 @@ jobs:
                   AWS_REGION: ${{ inputs.ssm_region }}
                   AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
-            - name: environment variable check
-              run: |
-                  yarn config:validate -s ${{ env.NODE_ENV }}
-              env:
-                  NODE_ENV: ${{ inputs.stage }}
     test:
         needs: build
         runs-on: ubuntu-latest
