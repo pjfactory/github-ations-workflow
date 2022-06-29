@@ -54,6 +54,10 @@ jobs:
                   yarn config:validate -s ${{ env.NODE_ENV }}
               env:
                   NODE_ENV: ${{ inputs.stage }}
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
             - name: test config 생성
               run: cp env/.env_local.json env/.env_test.json
             - name: test

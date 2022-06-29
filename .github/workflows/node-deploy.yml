@@ -7,9 +7,9 @@ on:
                 required: true
             stage:
                 required: true
-            ssm_region: 
+            ssm_region:
                 value: "us-east-1"
-            deploy_alias: 
+            deploy_alias:
                 value: "v1"
         secrets:
             npm_token:
@@ -58,6 +58,7 @@ jobs:
     deploy:
         needs: build
         runs-on: ubuntu-latest
+        steps:
             - name: deploy
               run: |
                   yarn deploy:${{ env.DEPLOY_ALIAS }} -s ${{ env.NODE_ENV }}
