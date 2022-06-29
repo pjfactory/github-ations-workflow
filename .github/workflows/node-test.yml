@@ -15,7 +15,7 @@ on:
             aws_secret_access_key:
                 required: true
 jobs:
-        build:
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
