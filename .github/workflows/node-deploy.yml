@@ -7,8 +7,8 @@ on:
                 required: true
             stage:
                 required: true
-            ssm_region: us-east-1
-            deploy_alias: v1
+            ssm_region: "us-east-1"
+            deploy_alias: "v1"
         secrets:
             npm_token:
                 required: true
