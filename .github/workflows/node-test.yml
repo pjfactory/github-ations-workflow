@@ -49,7 +49,7 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
             - name: config
-              run: yarn config:download -s ${{ env.NODE_ENV }}
+              run: yarn config:download -s local
               env:
                   NODE_ENV: ${{ inputs.stage }}
                   AWS_REGION: ${{ inputs.ssm_region }}
