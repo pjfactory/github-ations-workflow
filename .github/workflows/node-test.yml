@@ -7,7 +7,7 @@ on:
                 required: true
             stage:
                 required: true
-            ssm_region: 
+            ssm_region:
                 value: "us-east-1"
         secrets:
             npm_token:
@@ -30,19 +30,18 @@ jobs:
             - name: Get yarn cache directory path
               run: echo "::set-output name=dir::$(yarn cache dir)"
             - name: Cache node modules
-                uses: actions/cache@v3
-                with:
-                    path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                    key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ env.STAGE }}-${{ hashFiles('**/yarn.lock') }}
-                    restore-keys: |
-                        ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ env.STAGE }}-
-                env:
-                    CACHE_NAME: ${{ inputs.project_name }}
-                    STAGE: ${{ inputs.stage }}
+              uses: actions/cache@v3
+              with:
+                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+                  key: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ env.STAGE }}-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-build-${{ env.CACHE_NAME }}-${{ env.STAGE }}-
+              env:
+                  CACHE_NAME: ${{ inputs.project_name }}
+                  STAGE: ${{ inputs.stage }}
             - name: yarn install local dependency
               run: yarn install
               env:
-                NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+                  NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
             - name: config
               run: yarn config:download -s ${{ env.NODE_ENV }}
               env:
